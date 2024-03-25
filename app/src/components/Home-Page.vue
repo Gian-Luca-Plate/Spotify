@@ -3,13 +3,22 @@
     <div style="display: flex; justify-content: center;" class="pt-5">
       <searchbar @audio-changed="setAudioChanged" @audio="setAudio" />
     </div>
-    <div style="display: flex; justify-content: center;" class="pt-10">
-      <songBannerVue @audio-changed="setAudioChanged" @audio="setAudio"/>
-    </div>
+    <table>
+      <tr >
+        <td>
+
+          <songBannerVue @audio-changed="setAudioChanged" @audio="setAudio" class="pt-10 pl-20 pr-10" />
+
+        </td>
+        <td>
+          <songBanner02 @audio-changed="setAudioChanged" @audio="setAudio" class="pt-10" />
+        </td>
+      </tr>
+    </table>
     <audio v-if="audio" :src="audio" controls autoplay ref="audio" @timeupdate="updateProgress" style="display: none;"
       @ended="audioEnded"></audio>
     <div class="controls">
-      <button class="control-button" @click="togglePlay" >
+      <button class="control-button" @click="togglePlay">
         <span class="material-symbols-outlined " :class="{ 'play': isPlaying }">
           play_arrow
         </span>
@@ -27,6 +36,7 @@
 <script>
 import searchbar from './searchbar.vue';
 import songBannerVue from './song-banner.vue';
+import songBanner02 from './song-banner0,2.vue';
 export default {
   name: 'Home-page',
   data() {
@@ -39,9 +49,10 @@ export default {
   },
   components: {
     searchbar,
-    songBannerVue
+    songBannerVue,
+    songBanner02
   },
-  
+
   methods: {
     setAudioChanged(value) {
       this.audioChange = value
@@ -49,7 +60,7 @@ export default {
     },
     setAudio(value) {
       this.audio = value
-      
+
     },
 
     //play and paus button look

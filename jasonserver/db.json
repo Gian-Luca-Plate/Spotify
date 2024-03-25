@@ -5,9 +5,10 @@
       "coverImg":"https://notjustok.com/wp-content/uploads/2022/02/8B109DE2-FC13-4BB0-883A-1DEB35780DB5.jpeg"
     }
   ],
-  "A":[
+  "Carnival":[
     {
-      "path":"http://localhost/Spotify-clone/2.mp4"
+      "path":"http://127.0.0.1:8080/%C2%A5%24%2C%20Ye%2C%20Ty%20Dolla%20%24ign%20-%20CARNIVAL%20ft.%20Playboi%20Carti%20%26%20Rich%20Da%20Kid.mp3",
+      "coverImg":"https://upload.wikimedia.org/wikipedia/en/b/b1/Kanye_West_and_Ty_Dolla_Sign_-_Carnival.png?20240218124503"
     }
   ]
 }
