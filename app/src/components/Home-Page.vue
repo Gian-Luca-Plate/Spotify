@@ -1,9 +1,8 @@
 <template>
   <div id="Home-page">
     <div style="display: flex; justify-content: center;">
-      <searchbar />
+      <searchbar @audio-changed="setAudioChanged" @audio="setAudio" />
     </div>
-    <audio :src="audio" autoplay controls ref="AudioPlayer"></audio>
     <audio v-if="audio" :src="audio" controls ref="audio" @timeupdate="updateProgress" style="display: none;"
       @ended="audioEnded"></audio>
     <div class="controls">
@@ -23,52 +22,50 @@
 </template>
 
 <script>
-import axios from 'axios';
 import searchbar from './searchbar.vue';
 export default {
   name: 'Home-page',
   data() {
     return {
-      audio: null,
-      input: null,
-      data: [],
       progress: 0,
+      audio: null,
       isPlaying: false,
-      audioChange:false,
+      audioChange: false,
     }
   },
   components: {
     searchbar
   },
   created() {
-  // Diese Methode wird direkt beim Laden der Komponente aufgerufen
-  this.meineMethodeNachZeit();
-},
+    // Diese Methode wird direkt beim Laden der Komponente aufgerufen
+    this.meineMethodeNachZeit();
+  },
   methods: {
     meineMethodeNachZeit() {
-    // Verzögerung in Millisekunden festlegen (hier 3000 ms = 3 Sekunden)
-    const verzögerung = 10;
-      console.log('zeit')
-    // setTimeout verwenden, um die Methode nach der angegebenen Zeit auszuführen
-    setTimeout(() => {
-      // Führe hier den Code aus, den du nach der Verzögerung ausführen möchtest
-      this.changeAudio();
-      this.meineMethodeNachZeit();
-    }, verzögerung);
-  },
-    checkAudiochange(){
-      if (this.audioChange == true){
-        this.changeAudio()
+      const verzögerung = 10;
+      setTimeout(() => {
+        this.meineMethodeNachZeit();
+        this.checkAudiochange()
+      }, verzögerung);
+    },
+
+    checkAudiochange() {
+      if (this.audioChange == true) {
         this.audioChange = false
-      }else{
+        this.$refs.AudioPlayer.load();
+      } else {
         return
       }
     },
-    changeAudio() {
-      this.audio = this.audioChangesearch
-      console.log(this.audio)
-      this.$refs.AudioPlayer.load();
+    setAudioChanged(value) {
+      this.audioChange = value
+      console.log(this.audioChange)
     },
+    setAudio(value) {
+      this.audio = value
+    },
+
+    //play and paus button look
     togglePlay() {
       const audio = this.$refs.audio;
       this.isPlaying = !this.isPlaying;
@@ -78,15 +75,19 @@ export default {
         audio.pause();
       }
     },
+
     updateProgress() {
       const audio = this.$refs.audio;
       this.progress = (audio.currentTime / audio.duration) * 100;
       console.log(this.progress)
     },
+
     audioEnded() {
       this.isPlayings = true
       console.log('Audio ended');
     },
+
+
   },
 
 }

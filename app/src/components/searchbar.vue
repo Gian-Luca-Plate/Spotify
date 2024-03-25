@@ -2,7 +2,7 @@
     <div id="Home-page">
 
         <div class="example">
-            <input type="text" name="" id="" v-model="input">
+            <input type="text" name="" id="" v-model="input" @keypress.enter="getmusic">
             <button @click="getmusic" ><i class="fa fa-search"></i></button>
             
         </div>
@@ -16,21 +16,17 @@ export default {
     name: 'Home-page',
     data() {
         return {
-            audioChangesearch: null,
             input: null,
         }
     },
     methods: {
         getmusic() {
             axios.get('http://localhost:3000/' + this.input)
-                .then(response => {
+                .then(({ data }) => {
                     //Handle the successful response
-                    this.data = response.data;
-                    this.audioChangesearch = this.data[0].path
-                    console.log(this.data[0].path)
+                    this.$emit('audio', data[0].path)
+                    this.$emit('audioChanged', true)
                     console.log(this.audio)
-                    this.audioChange = true
-                    console.log(this.audioChange = true)
                 })
                 .catch(error => {
                     // Handle errors
@@ -42,7 +38,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 
 * {
@@ -60,6 +56,7 @@ div.example input[type=text] {
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     border: none;   
+    color:white;
 }
 
 /* Style the submit button */
@@ -90,5 +87,9 @@ div.example::after {
     clear: both;
     display: table;
     border: none;
+}
+
+input:focus {
+    outline: 0;
 }
 </style>
