@@ -1,12 +1,15 @@
 <template>
   <div id="Home-page">
-    <div style="display: flex; justify-content: center;">
+    <div style="display: flex; justify-content: center;" class="pt-5">
       <searchbar @audio-changed="setAudioChanged" @audio="setAudio" />
     </div>
-    <audio v-if="audio" :src="audio" controls ref="audio" @timeupdate="updateProgress" style="display: none;"
+    <div style="display: flex; justify-content: center;" class="pt-10">
+      <songBannerVue @audio-changed="setAudioChanged" @audio="setAudio"/>
+    </div>
+    <audio v-if="audio" :src="audio" controls autoplay ref="audio" @timeupdate="updateProgress" style="display: none;"
       @ended="audioEnded"></audio>
     <div class="controls">
-      <button class="control-button" @click="togglePlay">
+      <button class="control-button" @click="togglePlay" >
         <span class="material-symbols-outlined " :class="{ 'play': isPlaying }">
           play_arrow
         </span>
@@ -23,46 +26,30 @@
 
 <script>
 import searchbar from './searchbar.vue';
+import songBannerVue from './song-banner.vue';
 export default {
   name: 'Home-page',
   data() {
     return {
       progress: 0,
       audio: null,
-      isPlaying: false,
+      isPlaying: true,
       audioChange: false,
     }
   },
   components: {
-    searchbar
+    searchbar,
+    songBannerVue
   },
-  created() {
-    // Diese Methode wird direkt beim Laden der Komponente aufgerufen
-    this.meineMethodeNachZeit();
-  },
+  
   methods: {
-    meineMethodeNachZeit() {
-      const verzögerung = 10;
-      setTimeout(() => {
-        this.meineMethodeNachZeit();
-        this.checkAudiochange()
-      }, verzögerung);
-    },
-
-    checkAudiochange() {
-      if (this.audioChange == true) {
-        this.audioChange = false
-        this.$refs.AudioPlayer.load();
-      } else {
-        return
-      }
-    },
     setAudioChanged(value) {
       this.audioChange = value
       console.log(this.audioChange)
     },
     setAudio(value) {
       this.audio = value
+      
     },
 
     //play and paus button look

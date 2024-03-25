@@ -57,6 +57,7 @@ div.example input[type=text] {
     border-bottom-left-radius: 15px;
     border: none;   
     color:white;
+    text-align: center;
 }
 
 /* Style the submit button */
