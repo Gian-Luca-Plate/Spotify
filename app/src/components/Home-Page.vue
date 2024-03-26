@@ -1,18 +1,19 @@
 <template>
-  <div id="Home-page">
+  <div id="Home-page" >
     <div style="display: flex; justify-content: center;" class="pt-5">
-      <searchbar @audio-changed="setAudioChanged" @audio="setAudio" />
+      <searchbar @audio-changed="setAudioChanged" @audio="setAudio" class="z-10 fixed" />
     </div>
     <table>
-      <tr>
-        <td v-for="item in test" :key="item.id">
-
+      <tr >
+        <td v-for="item in test" :key="item">
           <songBanner :data-object="item" @audio-changed="setAudioChanged" @audio="setAudio"
-            class="pt-10 pl-[3.2rem] pr-10" />
-
+            class="pt-20 pl-[3.2rem] pr-10" />
         </td>
+        
+          
       </tr>
     </table>
+    
     <audio v-if="audio" :src="audio" controls autoplay ref="audio" @timeupdate="updateProgress" style="display: none;"
       @ended="audioEnded"></audio>
     <div class="controls">
@@ -20,7 +21,7 @@
         <img src="../assets/play-button-svgrepo-com.svg" class="w-10" v-if="isPlaying">
         <img src="../assets/pause-button-svgrepo-com.svg" class="w-10 " v-else >
       </button>
-      <div class="progress-bar">
+      <div class="progress-bar ">
         <div class="progress" :style="{ width: progress + '%' }"></div>
       </div>
     </div>
@@ -100,6 +101,7 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
 
+
 .audio-container {
   margin-bottom: 20px;
 }
@@ -110,7 +112,7 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   width: 500px;
-  background-color: #333;
+  background-color: #535353;
   padding: 10px;
   display: flex;
   align-items: center;
@@ -122,7 +124,7 @@ export default {
   flex-grow: 1;
   height: 10px;
   margin: 0 10px;
-  background-color: #535353;
+  background-color: #333;
   border-radius: 5px;
   overflow: hidden;
 }

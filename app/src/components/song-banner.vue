@@ -4,7 +4,7 @@
             <div class="bg-[#535353] flex flex-col items-center w-30 p-67 rounded-xl group ">
                 <div class="relative m-4 rounded-xl overflow-hidden">
                     <span
-                        class="z-10 group-hover:opacity-50 opacity-0 absolute top-0 h-full w-full bg-black transition-all ease-in-out duration-200 flex justify-center " />
+                        class="z-10 group-hover:opacity-50  opacity-0 absolute top-0 h-full w-full bg-black transition-all ease-in-out duration-200 flex justify-center " />
                     <div
                         class="z-20 w-full h-full absolute flex justify-center items-center  group-hover:visible  invisible text-white">
                         <button @click="getmusic" class="cursor-pointer">
@@ -13,7 +13,7 @@
 
                     </div>
                 <div class="rounded-lg overflow-hidden ">
-                    <img class="object-cover w-full h-full top-0 group-hover:blur-lg " :src="$props.dataObject.coverImg">
+                    <img class="object-cover w-full h-full top-0 group-hover:blur-lg group-hover:animate-pulse group-hover:transition duration-150 ease-in-out" :src="$props.dataObject.coverImg">
                 </div>
                     
 
