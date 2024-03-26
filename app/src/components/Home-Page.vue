@@ -5,7 +5,7 @@
     </div>
     <table>
       <tr >
-        <td v-for="item in test" :key="item">
+        <td v-for="item in serverObject" :key="item">
           <songBanner :data-object="item" @audio-changed="setAudioChanged" @audio="setAudio"
             class="pt-20 pl-[3.2rem] pr-10" />
         </td>
@@ -41,8 +41,8 @@ export default {
       audio: null,
       isPlaying: true,
       audioChange: false,
-      test: null,
-      testObject: undefined
+      serverObject: null,
+      
     }
   },
 
@@ -85,8 +85,8 @@ export default {
     getary() {
       axios.get('http://localhost:3000/songs')
         .then(({ data }) => {
-          this.test = data
-          this.testObject = data
+          this.serverObject = data
+          
         })
     }
 

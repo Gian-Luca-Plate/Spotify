@@ -13,7 +13,7 @@
 
                     </div>
                 <div class="rounded-lg overflow-hidden ">
-                    <img class="object-cover w-full h-full top-0 group-hover:blur-lg group-hover:animate-pulse group-hover:transition duration-150 ease-in-out" :src="$props.dataObject.coverImg">
+                    <img class="object-cover w-full h-full top-0 group-hover:blur-lg  group-hover:transition duration-150 ease-in-out" :src="$props.dataObject.coverImg">
                 </div>
                     
 
