@@ -4,12 +4,13 @@
       <searchbar @audio-changed="setAudioChanged" @audio="setAudio" />
     </div>
     <table>
-      <tr >
-        <td>
+      <tr>
+        <td v-for="item in test" :key="item.id">
 
-          <songBanner  @audio-changed="setAudioChanged" @audio="setAudio"  class="pt-10 pl-20 pr-10" />
+          <songBanner :data-object="item" @audio-changed="setAudioChanged" @audio="setAudio"
+            class="pt-10 pl-20 pr-10" />
 
-        </td> 
+        </td>
       </tr>
     </table>
     <audio v-if="audio" :src="audio" controls autoplay ref="audio" @timeupdate="updateProgress" style="display: none;"
@@ -43,13 +44,15 @@ export default {
       audio: null,
       isPlaying: true,
       audioChange: false,
+      test: null,
+      testObject: undefined
     }
   },
+
   components: {
     searchbar,
     songBanner,
   },
-
   methods: {
     setAudioChanged(value) {
       this.audioChange = value
@@ -81,8 +84,17 @@ export default {
       console.log('Audio ended');
     },
 
+    getary() {
+      axios.get('http://localhost:3000/songs')
+        .then(({ data }) => {
+          this.test = data
+          this.testObject = data
+        })
+    }
 
-    
+  },
+  created() {
+    this.getary()
   },
 
 }
