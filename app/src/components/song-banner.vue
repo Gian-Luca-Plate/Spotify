@@ -6,14 +6,14 @@
                     <span
                         class="z-10 group-hover:opacity-50 opacity-0 absolute top-0 h-full w-full bg-black transition-all ease-in-out duration-200 flex justify-center " />
                     <div
-                        class="z-20 w-full h-full absolute flex justify-center items-center group-hover:visible invisible text-white">
+                        class="z-20 w-full h-full absolute flex justify-center items-center  group-hover:visible  invisible text-white">
                         <button @click="getmusic" class="cursor-pointer">
                             <img class="w-20 " src="../assets/play-button-svgrepo-com.svg">
                         </button>
 
                     </div>
                 <div class="rounded-lg overflow-hidden ">
-                    <img class="object-cover w-full h-full top-0 " :src="$props.dataObject.coverImg">
+                    <img class="object-cover w-full h-full top-0 group-hover:blur-lg " :src="$props.dataObject.coverImg">
                 </div>
                     
 

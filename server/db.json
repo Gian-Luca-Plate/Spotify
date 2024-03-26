@@ -18,6 +18,18 @@
       "path": "http://127.0.0.1:8080/%C2%A5%24%2C%20Ye%2C%20Ty%20Dolla%20%24ign%20-%20CARNIVAL%20ft.%20Playboi%20Carti%20%26%20Rich%20Da%20Kid.mp3",
       "coverImg": "https://upload.wikimedia.org/wikipedia/en/b/b1/Kanye_West_and_Ty_Dolla_Sign_-_Carnival.png?20240218124503",
       "Maker": "¥$,Kanye West,Ty Dolla $ign,Rich The Kid,Playboi Carti"
+    },
+    {
+      "songName": "CAN'T HOLD US",
+      "path": "http://127.0.0.1:8080/Macklemore%20%26%20Ryan%20Lewis%20-%20Cant%20Hold%20Us%20(Lyrics)%20ft.%20Ray%20Dalton.mp3",
+      "coverImg": "https://i1.sndcdn.com/artworks-000116196139-syzrd9-t500x500.jpg",
+      "Maker": "MACKLEMORE & RYAN LEWIS"
+    },
+    {
+      "songName": "Real Albanian",
+      "path": "http://127.0.0.1:8080/Vision%20-%20Real%20Albanian%20%5BMusic%20Video%5D%20%20GRM%20Daily.mp3",
+      "coverImg": "https://i.scdn.co/image/ab67616d0000b273f238769ac7f144983a35645a",
+      "Maker": "Vision"
     }
   ]
 }
