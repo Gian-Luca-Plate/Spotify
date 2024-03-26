@@ -15,11 +15,10 @@
                     <img class="object-cover w-full h-full pr-4 pb-4" :src="songCover">
 
                 </div>
-                <div class="text-neutral-50 text-xl">
-                    Body
+                <div class="text-neutral-50 text-xl" v-html="songnName">
+
                 </div>
-                <div class="text-neutral-50 text-xs">
-                    russ millions, Tion Wayne
+                <div class="text-neutral-50 text-xs truncate  " v-html="songMaker">
                 </div>
             </div>
         </div>
@@ -35,38 +34,31 @@ export default {
     name: 'song-banner',
     data() {
         return {
-            songnName: 'Body',
+            songnName: null,
             songCover: null,
+            songMaker: null,
+            songAudio: null
         }
     },
     created() {
-        this.getimg()
+        this.getary()
     },
-
-    methods: {
-        getimg() {
-            axios.get('http://localhost:3000/' + this.songnName)
+    methods:{
+        getary(){
+            axios.get('http://localhost:3000/songs')
                 .then(({ data }) => {
-                    this.songCover = data[0].coverImg
+                    this.songCover = data[0].a[0].coverImg
+                    this.songnName = data[0].a[0].songName
+                    this.songMaker = data[0].a[0].Maker
+                    this.songAudio = data[0].a[0].path
                 })
-                .catch(error => {
-                    // Handle errors
-                    console.error('Error fetching data:', error);
-                });
         },
-        getmusic() {
-            axios.get('http://localhost:3000/' + this.songnName)
-                .then(({ data }) => {
-                    this.$emit('audio', data[0].path)
-                    this.$emit('audioChanged', true)
-                    console.log(this.audio)
-                })
-                .catch(error => {
-                    // Handle errors
-                    console.error('Error fetching data:', error);
-                });
+        getmusic(){
+            this.$emit('audio', this.songAudio)
+            this.$emit('audioChanged', true)
         }
     }
+    
 }
 </script>
 

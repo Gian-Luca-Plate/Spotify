@@ -7,12 +7,9 @@
       <tr >
         <td>
 
-          <songBannerVue @audio-changed="setAudioChanged" @audio="setAudio" class="pt-10 pl-20 pr-10" />
+          <songBanner  @audio-changed="setAudioChanged" @audio="setAudio"  class="pt-10 pl-20 pr-10" />
 
-        </td>
-        <td>
-          <songBanner02 @audio-changed="setAudioChanged" @audio="setAudio" class="pt-10" />
-        </td>
+        </td> 
       </tr>
     </table>
     <audio v-if="audio" :src="audio" controls autoplay ref="audio" @timeupdate="updateProgress" style="display: none;"
@@ -35,8 +32,9 @@
 
 <script>
 import searchbar from './searchbar.vue';
-import songBannerVue from './song-banner.vue';
-import songBanner02 from './song-banner0,2.vue';
+import songBanner from './song-banner.vue';
+import axios from 'axios';
+
 export default {
   name: 'Home-page',
   data() {
@@ -49,8 +47,7 @@ export default {
   },
   components: {
     searchbar,
-    songBannerVue,
-    songBanner02
+    songBanner,
   },
 
   methods: {
@@ -77,7 +74,6 @@ export default {
     updateProgress() {
       const audio = this.$refs.audio;
       this.progress = (audio.currentTime / audio.duration) * 100;
-      console.log(this.progress)
     },
 
     audioEnded() {
@@ -86,6 +82,7 @@ export default {
     },
 
 
+    
   },
 
 }

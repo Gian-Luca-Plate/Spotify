@@ -1,14 +1,39 @@
 {
-  "Body":[
+  
+  
+  "songs":[
     {
-      "path":"http://127.0.0.1:8080/Russ%20Millions%20x%20Tion%20Wayne%20-%20Body%20%5BMusic%20Video%5D%20%20GRM%20Daily.mp3",
-      "coverImg":"https://notjustok.com/wp-content/uploads/2022/02/8B109DE2-FC13-4BB0-883A-1DEB35780DB5.jpeg"
-    }
-  ],
-  "Carnival":[
-    {
-      "path":"http://127.0.0.1:8080/%C2%A5%24%2C%20Ye%2C%20Ty%20Dolla%20%24ign%20-%20CARNIVAL%20ft.%20Playboi%20Carti%20%26%20Rich%20Da%20Kid.mp3",
-      "coverImg":"https://upload.wikimedia.org/wikipedia/en/b/b1/Kanye_West_and_Ty_Dolla_Sign_-_Carnival.png?20240218124503"
+      "a":[
+        {
+          "path": "http://127.0.0.1:8080/Ed%20Sheeran%20-%20Shivers%20(Lyrics).mp3",
+          "coverImg": "https://images.genius.com/a191cd0aaa3c136ca5a4cbf5a8496b17.1000x1000x1.jpg",
+          "Maker": "Ed Sheeran",
+          "songName": "Shivers"
+        }
+      ],
+      "b":[
+        {
+          "Body":[
+            {
+              "path":"http://127.0.0.1:8080/Russ%20Millions%20x%20Tion%20Wayne%20-%20Body%20%5BMusic%20Video%5D%20%20GRM%20Daily.mp3",
+              "coverImg":"https://notjustok.com/wp-content/uploads/2022/02/8B109DE2-FC13-4BB0-883A-1DEB35780DB5.jpeg",
+              "Maker":"Russ millions, Tion Wayne"
+            }
+          ]
+        }
+      ],
+      "c":[
+        {
+          "Carnival":[
+            {
+              "path":"http://127.0.0.1:8080/%C2%A5%24%2C%20Ye%2C%20Ty%20Dolla%20%24ign%20-%20CARNIVAL%20ft.%20Playboi%20Carti%20%26%20Rich%20Da%20Kid.mp3",
+              "coverImg":"https://upload.wikimedia.org/wikipedia/en/b/b1/Kanye_West_and_Ty_Dolla_Sign_-_Carnival.png?20240218124503",
+              "Maker": "¥$,Kanye West,Ty Dolla $ign,Rich The Kid,Playboi Carti"
+            }
+          ]
+        }
+      ]
     }
   ]
+
 }
