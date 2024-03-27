@@ -1,13 +1,13 @@
 <template>
-    <div id="searchbar">
+    <div id="searchbar" @mouseover="mousOversearchBar" @mouseleave="mousNotOversearchBar">
 
         <div class="example">
-            <input type="text" name="" id="" v-model="input" @keypress.enter="getmusic">
+            <input type="text" name="" id="" v-model="input" @keypress.enter="getmusic" >
             <button @click="getmusic"><i class="fa fa-search"></i></button>
 
         </div>
-       <div class="pl-[1rem]">
-            <table class="bg-[#535353] w-[19.5rem] rounded-b-2xl	">
+        <div class="pl-[1rem]" v-if="test">
+            <table class="bg-[#535353] w-[19.5rem] rounded-b-2xl">
                 <tr v-for="item in filteredList" :key="item">
                     <td>
                         <searchErgebnise :data-object="item" class="pt-[5px] pb-[5px]" @audio-changed="setAudioChanged"
@@ -16,7 +16,7 @@
                 </tr>
             </table>
         </div>
-        
+
 
 
     </div>
@@ -34,7 +34,7 @@ export default {
             serverObject: [],
             isTyping: false,
             songAudio: null,
-            test:[]
+            test: false
 
         }
     },
@@ -45,15 +45,22 @@ export default {
         this.getary()
         this.input = ref("")
     },
-    
-  computed: {
-    filteredList() {
-      return this.serverObject.filter(p =>
+
+    computed: {
+        filteredList() {
+            return this.serverObject.filter(p =>
                 p.songName.toLowerCase().includes(this.input.toLowerCase())
             );
-    }
-  },
+        },
+
+    },
     methods: {
+        mousOversearchBar() {
+            this.test = true
+        },
+        mousNotOversearchBar() {
+            this.test = false
+        },
         getary() {
             axios.get('http://localhost:3000/songs')
                 .then(({ data }) => {

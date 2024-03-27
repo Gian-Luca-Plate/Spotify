@@ -29,6 +29,12 @@
       "path": "http://127.0.0.1:8080/Vision%20-%20Real%20Albanian%20%5BMusic%20Video%5D%20%20GRM%20Daily.mp3",
       "coverImg": "https://i.scdn.co/image/ab67616d0000b273f238769ac7f144983a35645a",
       "Maker": "Vision"
+    },
+    {
+      "songName": "Mashle Funk",
+      "path": "http://127.0.0.1:8080/Mashle%20Funk.mp3",
+      "coverImg": "https://www.shazam.com/mkimage/image/thumb/Music126/v4/35/a6/09/35a609d8-6ddf-3dea-644b-aefd93716a76/7422409353304.jpg/510x510bb-60.webp",
+      "Maker": "CONTRVZT"
     }
   ]
 }

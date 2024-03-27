@@ -3,8 +3,9 @@
     <div style="display: flex; justify-content: center;" class="pt-5">
       <searchbar @audio-changed="setAudioChanged" @audio="setAudio" class="z-30 fixed" />
     </div>
-    <table>
-      <tr >
+    <div class="mt-40 overflow-x-auto w-[104rem] h-[26rem]">
+      <table >
+      <tr>
         <td v-for="item in serverObject" :key="item">
           <songBanner :data-object="item" @audio-changed="setAudioChanged" @audio="setAudio"
             class="pt-20 pl-[3.2rem] pr-10 " />
@@ -13,9 +14,11 @@
           
       </tr>
     </table>
+    </div>
+  
     
-    <audio v-if="audio" :src="audio" controls autoplay ref="audio" @timeupdate="updateProgress" style="display: none;"
-      @ended="audioEnded"></audio>
+    <audio v-if="audio" :src="audio" controls autoplay  ref="audio" @timeupdate="updateProgress" style="display: none;"
+      @ended="audioEnded" v></audio>
     <div class="controls">
       <button @click="togglePlay" class="transition ease-in-out delay-150 bg-[] hover:-translate-y-1 hover:scale-110  duration-300">
         <img src="../assets/play-button-svgrepo-com.svg" class="w-10" v-if="!isPlaying">
@@ -24,6 +27,12 @@
       <div class="progress-bar ">
         <div class="progress" :style="{ width: progress + '%' }"></div>
       </div>
+      <input v-model="percent" type="range"
+        class="windowsSliderInput text-[#e46f03]"
+        min="0"
+        max="100"
+        @click="volumenChanger"
+      />
     </div>
   </div>
 </template>
@@ -42,6 +51,7 @@ export default {
       isPlaying: false,
       audioChange: false,
       serverObject: null,
+      percent: 0,
       
     }
   },
@@ -70,6 +80,7 @@ export default {
         audio.pause();
       }
     },
+    
 
     updateProgress() {
       const audio = this.$refs.audio;
@@ -77,7 +88,8 @@ export default {
     },
 
     audioEnded() {
-      this.isPlayings = true
+      this.isPlaying = false
+      this.togglePlay()
       console.log('Audio ended');
     },
 
@@ -87,13 +99,17 @@ export default {
           this.serverObject = data
           
         })
+    },
+    volumenChanger(){
+      const audio = this.$refs.audio;
+      audio.volume = this.percent / 100
+      console.log(audio.volume)
     }
 
   },
   created() {
     this.getary()
   },
-
 }
 </script>
 
@@ -134,4 +150,50 @@ export default {
   border-radius: 5px;
   transition: width 0.1s;
 }
+::-webkit-scrollbar {
+  padding-top: 10px;
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #333;
+  
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e46f03;
+  border-radius: 15px;
+  width: 10px;
+}
+::-webkit-scrollbar-thumb :hover {
+  background: #ffffff;
+  border-radius: 15px;
+  width: 10px;
+}
+input[type="range"] 
+ {
+  -webkit-appearance: none;
+  background: #333;
+  cursor: pointer;
+  width: 6rem;
+  border-radius: 15px;
+  height: 0.625rem;
+  z-index: 70;
+}
+
+
+input[type="range"]::-webkit-slider-thumb {
+   -webkit-appearance: none; /* Override default look */
+   appearance: none; /* Centers thumb on the track */
+   margin-top: -12;
+   background-color: #e46f03;
+   height: 1rem;
+   width: 1rem;    
+   border-radius: 9999px;
+}
+
+
+
+/* Handle on hover */
 </style>
