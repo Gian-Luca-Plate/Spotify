@@ -35,6 +35,12 @@
       "path": "http://127.0.0.1:8080/Mashle%20Funk.mp3",
       "coverImg": "https://www.shazam.com/mkimage/image/thumb/Music126/v4/35/a6/09/35a609d8-6ddf-3dea-644b-aefd93716a76/7422409353304.jpg/510x510bb-60.webp",
       "Maker": "CONTRVZT"
+    },
+    {
+      "songName": "BAMBA",
+      "path": "http://127.0.0.1:8080/LUCIANO%20x%20BIA%20x%20AITCH%20-%20BAMBA%20%5BLyrics%5D.mp3",
+      "coverImg": "https://images.universal-music.de/img/assets/577/577241/4/300/bamba-cover.jpg",
+      "Maker": "Luciano,Bia & Aitch"
     }
   ]
 }

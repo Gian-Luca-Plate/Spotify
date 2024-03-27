@@ -51,7 +51,7 @@ export default {
       isPlaying: false,
       audioChange: false,
       serverObject: null,
-      percent: 0,
+      percent: 100,
       
     }
   },
