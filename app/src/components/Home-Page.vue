@@ -1,13 +1,13 @@
 <template>
   <div id="Home-page" >
     <div style="display: flex; justify-content: center;" class="pt-5">
-      <searchbar @audio-changed="setAudioChanged" @audio="setAudio" class="z-10 fixed" />
+      <searchbar @audio-changed="setAudioChanged" @audio="setAudio" class="z-30 fixed" />
     </div>
     <table>
       <tr >
         <td v-for="item in serverObject" :key="item">
           <songBanner :data-object="item" @audio-changed="setAudioChanged" @audio="setAudio"
-            class="pt-20 pl-[3.2rem] pr-10" />
+            class="pt-20 pl-[3.2rem] pr-10 " />
         </td>
         
           
@@ -18,7 +18,7 @@
       @ended="audioEnded"></audio>
     <div class="controls">
       <button @click="togglePlay" class="transition ease-in-out delay-150 bg-[] hover:-translate-y-1 hover:scale-110  duration-300">
-        <img src="../assets/play-button-svgrepo-com.svg" class="w-10" v-if="isPlaying">
+        <img src="../assets/play-button-svgrepo-com.svg" class="w-10" v-if="!isPlaying">
         <img src="../assets/pause-button-svgrepo-com.svg" class="w-10 " v-else >
       </button>
       <div class="progress-bar ">
@@ -39,7 +39,7 @@ export default {
     return {
       progress: 0,
       audio: null,
-      isPlaying: true,
+      isPlaying: false,
       audioChange: false,
       serverObject: null,
       
@@ -52,9 +52,8 @@ export default {
   },
   methods: {
     setAudioChanged(value) {
-      this.audioChange = value
       console.log(this.audioChange)
-      this.isPlaying = false
+      this.isPlaying = true
     },
     setAudio(value) {
       this.audio = value
@@ -66,9 +65,9 @@ export default {
       const audio = this.$refs.audio;
       this.isPlaying = !this.isPlaying;
       if (this.isPlaying) {
-        audio.pause();
-      } else {
         audio.play();
+      } else {
+        audio.pause();
       }
     },
 
