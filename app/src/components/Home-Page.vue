@@ -7,15 +7,13 @@
       <table>
         <tr>
           <td v-for="item in serverObject" :key="item">
-            <songBanner :data-object="item" @audio-changed="setAudioChanged" @audio="setAudio" @liste="setListe"
+            <songBanner :data-object="item" @audio-changed="setAudioChanged" @audio="setAudio" @liste="setListe" @liste-name="setListeName"
               class="pt-20 pl-[3.2rem] pr-10 " />
           </td>
-
-
         </tr>
       </table>
     </div>
-
+    
     <audio v-if="audio" :src="audio" controls autoplay ref="audio" @timeupdate="updateProgress" style="display: none;"
       @ended="audioEnded" v></audio>
     <div class="controls">
@@ -51,7 +49,8 @@ export default {
       percent: 100,
       liste: [],
       listeAddet: 0,
-      listeDurch: 0
+      listeDurch: 0,
+      listeName: []
 
     }
   },
@@ -114,9 +113,14 @@ export default {
       this.liste = value
       this.saveInStorage()
     },
+    setListeName(value){
+      this.listeName = value
+    },
     saveInStorage() {
       const data = this.liste
+      const dataName = this.listeName
       window.localStorage.setItem('songs' + this.listeAddet, data)
+      window.localStorage.setItem('Names' + this.listeAddet, dataName)
       this.listeAddet = this.listeAddet + 1
       console.log(this.listeAddet)
       window.localStorage.setItem('listeAddet', JSON.parse(this.listeAddet))

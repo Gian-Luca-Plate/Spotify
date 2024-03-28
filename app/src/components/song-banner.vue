@@ -74,6 +74,7 @@ export default {
         return {
             songAudio: null,
             liste:[],
+            listeName:[]
         }
     },
     created() {
@@ -91,12 +92,14 @@ export default {
         },
         addToList(){
             this.liste.push(
-                
                     this.dataObject.path
-                
+            )
+            this.listeName.push(
+                this.dataObject.songName
             )
             console.log(this.liste)
             this.$emit('liste', this.liste)
+            this.$emit('listeName', this.listeName)
         },
         
         
