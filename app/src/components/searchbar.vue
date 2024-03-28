@@ -1,14 +1,14 @@
 <template>
-    <div id="searchbar" @mouseover="mousOversearchBar" @mouseleave="mousNotOversearchBar">
+    <div id="searchbar"  @mouseleave="mousNotOversearchBar">
 
         <div class="example">
-            <input type="text" name="" id="" v-model="input" @keypress.enter="getmusic" >
+            <input type="text" name="" id="" v-model="input" @keypress.enter="getmusic" @input="mousOversearchBar">
             <button @click="getmusic"><i class="fa fa-search"></i></button>
 
         </div>
-        <div class="pl-[1rem]" v-if="test">
-            <table class="bg-[#535353] w-[19.5rem] rounded-b-2xl">
-                <tr v-for="item in filteredList" :key="item">
+        <div class="pl-[1rem] " v-if="test">
+            <table class="bg-[#535353] w-[19.5rem] rounded-b-2xl ">
+                <tr v-for="item in filteredList" :key="item" >
                     <td>
                         <searchErgebnise :data-object="item" class="pt-[5px] pb-[5px]" @audio-changed="setAudioChanged"
                             @audio="setAudio" @click="getmusic" />
@@ -56,7 +56,12 @@ export default {
     },
     methods: {
         mousOversearchBar() {
-            this.test = true
+            if(this.input == ''){
+                this.test = false
+            }else{
+                this.test = true
+            }
+            
         },
         mousNotOversearchBar() {
             this.test = false

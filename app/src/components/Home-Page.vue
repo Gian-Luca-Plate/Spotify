@@ -3,20 +3,18 @@
     <div style="display: flex; justify-content: center;" class="pt-5">
       <searchbar @audio-changed="setAudioChanged" @audio="setAudio" class="z-30 fixed" />
     </div>
-    <div class="mt-40 overflow-x-auto w-[104rem] h-[26rem]">
+    <div class="mt-40 overflow-x-auto w-full h-[27rem]">
       <table >
       <tr>
         <td v-for="item in serverObject" :key="item">
-          <songBanner :data-object="item" @audio-changed="setAudioChanged" @audio="setAudio"
-            class="pt-20 pl-[3.2rem] pr-10 " />
+          <songBanner :data-object="item" @audio-changed="setAudioChanged" @audio="setAudio" @liste="setListe" class="pt-20 pl-[3.2rem] pr-10 " />
         </td>
         
           
       </tr>
     </table>
     </div>
-  
-    
+
     <audio v-if="audio" :src="audio" controls autoplay  ref="audio" @timeupdate="updateProgress" style="display: none;"
       @ended="audioEnded" v></audio>
     <div class="controls">
@@ -38,6 +36,7 @@
 </template>
 
 <script>
+import { jsx } from 'vue/jsx-runtime';
 import searchbar from './searchbar.vue';
 import songBanner from './song-banner.vue';
 import axios from 'axios';
@@ -52,6 +51,9 @@ export default {
       audioChange: false,
       serverObject: null,
       percent: 100,
+      liste:[],
+      listeAddet: 0,
+      listeDurch:0
       
     }
   },
@@ -89,8 +91,13 @@ export default {
 
     audioEnded() {
       this.isPlaying = false
+      var data = []
+      data.push( window.localStorage.getItem('songs'+ this.listeDurch))
+      this.audio = data
+      this.listeDurch = this.listeDurch + 1
+      console.log(this.audio);
       this.togglePlay()
-      console.log('Audio ended');
+      this.updateProgress()
     },
 
     getary() {
@@ -104,11 +111,30 @@ export default {
       const audio = this.$refs.audio;
       audio.volume = this.percent / 100
       console.log(audio.volume)
-    }
+    },
+    setListe(value){
+      this.liste = value
+      this.saveInStorage()
+    },
+    saveInStorage(){
+            const data = this.liste
+            window.localStorage.setItem('songs' +  this.listeAddet, data)
+            this.listeAddet = this.listeAddet + 1
+            console.log(this.listeAddet)
+            window.localStorage.setItem('listeAddet', JSON.parse(this.listeAddet))
+        },
+        listeAddetCheck(){
+            this.listeAddet  = window.localStorage.getItem('listeAddet')
+            if(this.listeAddet == null){
+              this.listeAddet += 1
+            }
+            console.log(this.listeAddet)
+        }
 
   },
   created() {
     this.getary()
+    this.listeAddetCheck()
   },
 }
 </script>
@@ -126,13 +152,13 @@ export default {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 500px;
   background-color: #535353;
   padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  width: 500px;
 }
 
 .progress-bar {
@@ -193,7 +219,44 @@ input[type="range"]::-webkit-slider-thumb {
    border-radius: 9999px;
 }
 
+@media only screen and (max-width: 800px){
+  .controls {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #535353;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 300px;
+}
+input[type="range"] 
+ {
+  display: none;
+}
 
 
-/* Handle on hover */
+input[type="range"]::-webkit-slider-thumb {
+  display: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  display: none;
+  
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  display: none;
+}
+::-webkit-scrollbar-thumb :hover {
+  display: none;
+}
+}
 </style>

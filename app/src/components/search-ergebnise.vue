@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
         <button v-html="$props.dataObject.songName" @click="getmusic" class="text-white text-smk pl-3 font-bold ">
 
         </button>
