@@ -7,63 +7,32 @@
                         <div class="pl-[5px]">
                             <button class="plus-button plus-button--small  transition ease-in-out delay-150 bg-[] hover:-translate-y-1 hover:scale-110  duration-300 " @click="addToList"></button>
                         </div>
-                        
                     </tr>
                     <tr>
-                       
                         <td>
                             <div class="relative m-4 rounded-xl overflow-hidden">
-
-                                <span
-                                    class="z-10 group-hover:opacity-50  opacity-0 absolute top-0 h-full w-full bg-black transition-all ease-in-out duration-200 flex justify-center " />
-
-                                <div
-                                    class="z-30 w-full h-full absolute flex justify-center items-center  group-hover:visible  invisible text-white">
-
+                                <span class="z-10 group-hover:opacity-50  opacity-0 absolute top-0 h-full w-full bg-black transition-all ease-in-out duration-200 flex justify-center " />
+                                <div class="z-30 w-full h-full absolute flex justify-center items-center  group-hover:visible  invisible text-white">
                                     <button @click="getmusic" class="cursor-pointer">
-
                                         <img class="w-20 " src="../assets/play-button-svgrepo-com.svg">
-
                                     </button>
-
                                 </div>
-
                                 <div class="rounded-lg overflow-hidden ">
-
                                     <img class="object-cover w-full h-full top-0 group-hover:blur-lg  group-hover:transition duration-150 ease-in-out" :src="$props.dataObject.coverImg">
-
                                 </div>
-
                             </div>
                         </td>
-
-
-
                     </tr>
-
                     <tr class="flex justify-center">
-
                         <div class="text-neutral-50 text-xl" v-html="$props.dataObject.songName"></div>
-
                     </tr>
-
                     <tr class="flex justify-center">
-
-                        <div class="text-neutral-50 text-xs truncate w-[150px] text-center pb-2"
-                            v-html="$props.dataObject.Maker"> </div>
-
+                        <div class="text-neutral-50 text-xs truncate w-[150px] text-center pb-2" v-html="$props.dataObject.Maker"> </div>
                     </tr>
-
                 </table>
-
             </div>
-
         </div>
-
     </div>
-
-
-
 </template>
 
 <script>

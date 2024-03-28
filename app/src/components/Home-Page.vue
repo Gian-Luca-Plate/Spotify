@@ -69,7 +69,6 @@ export default {
 
     },
 
-    //play and paus button look
     togglePlay() {
       const audio = this.$refs.audio;
       this.isPlaying = !this.isPlaying;
@@ -101,7 +100,6 @@ export default {
       axios.get('http://localhost:3000/songs')
         .then(({ data }) => {
           this.serverObject = data
-
         })
     },
     volumenChanger() {
@@ -132,7 +130,6 @@ export default {
       }
       console.log(this.listeAddet)
     }
-
   },
   created() {
     this.getary()
@@ -184,13 +181,11 @@ export default {
   width: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: #333;
 
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #e46f03;
   border-radius: 15px;
@@ -216,9 +211,7 @@ input[type="range"] {
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  /* Override default look */
   appearance: none;
-  /* Centers thumb on the track */
   margin-top: -12;
   background-color: #e46f03;
   height: 1rem;
@@ -254,13 +247,11 @@ input[type="range"]::-webkit-slider-thumb {
     display: none;
   }
 
-  /* Track */
   ::-webkit-scrollbar-track {
     display: none;
 
   }
 
-  /* Handle */
   ::-webkit-scrollbar-thumb {
     display: none;
   }

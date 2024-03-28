@@ -4,7 +4,6 @@
         <div class="example">
             <input type="text" name="" id="" v-model="input" @keypress.enter="getmusic" @input="mousOversearchBar">
             <button @click="getmusic"><i class="fa fa-search"></i></button>
-
         </div>
         <div class="pl-[1rem] " v-if="test">
             <table class="bg-[#535353] w-[19.5rem] rounded-b-2xl ">
@@ -16,14 +15,11 @@
                 </tr>
             </table>
         </div>
-
-
-
     </div>
 </template>
 
 <script>
-import axios, { all } from 'axios';
+import axios from 'axios';
 import searchErgebnise from './search-ergebnise.vue';
 import { ref } from 'vue';
 export default {
