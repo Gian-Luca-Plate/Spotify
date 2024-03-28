@@ -41,6 +41,12 @@
       "path": "http://127.0.0.1:8080/LUCIANO%20x%20BIA%20x%20AITCH%20-%20BAMBA%20%5BLyrics%5D.mp3",
       "coverImg": "https://images.universal-music.de/img/assets/577/577241/4/300/bamba-cover.jpg",
       "Maker": "Luciano,Bia & Aitch"
+    },
+    {
+      "songName": "The Scotts",
+      "path": "http://192.168.178.125:8080/Travis%20Scott%20-%20THE%20SCOTTS%20(Lyrics)%20ft.%20Kid%20Cudi.mp3",
+      "coverImg": "https://i.scdn.co/image/ab67616d0000b27311d6f8c713ef93a9bb64ddfe",
+      "Maker": "THE SCOTTS,Travis Scott,Kid Cudi"
     }
   ]
 }
